@@ -1,0 +1,6 @@
+ref
+===
+putting the approximation functions up against apparently-good implementations from the internet
+
+ml : https://www.mathworks.com/matlabcentral/fileexchange/48154-the-mittag-leffler-function
+mittag_leffler : https://github.com/lrtfm/Mittag-Leffler-Function
