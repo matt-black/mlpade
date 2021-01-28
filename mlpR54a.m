@@ -18,6 +18,8 @@ function [ R54 ] = mlpR54a ( alpha, x )
          0;
          0;
          m2d];
+    % solve system
     pq = A \ b;
+    % compute
     R54 = computeRa4o (alpha, pq, x);
 end

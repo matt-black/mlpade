@@ -52,10 +52,11 @@ for sp = 1:4
     beta  = abps{sp}(2);
     ref   = mittag_leffler (alpha, beta, -xs);
     app5  = mlpR54 (alpha, beta, xs);
+    app6  = mlpR63 (alpha, beta, xs);
     app7  = mlpR72 (alpha, beta, xs);
     subplot (2, 2, sp)
-    plot (xs, app5, 'm*', xs, app7, 'ro', xs, ref, 'b')
-    legend ('5,4)','(7,2)','ml')
+    plot (xs, app5, 'm*', xs, app6, 'g^', xs, app7, 'ro', xs, ref, 'b')
+    legend ('5,4)', '(6,3)', '(7,2)','ml')
 end
 
 %% Figure 4
@@ -71,10 +72,11 @@ for sp = 1:2
     beta  = abps{sp}(2);
     ref   = mittag_leffler (alpha, beta, -xs);
     app5  = mlpR54 (alpha, beta, xs);
+    app6  = mlpR63 (alpha, beta, xs);
     app7  = mlpR72 (alpha, beta, xs);
     subplot (1, 2, sp)
-    plot (xs, app5, 'm*', xs, app7, 'ro', xs, ref, 'b')
-    legend ('(5,4)','(7,2)','ml')
+    plot (xs, app5, 'm*', xs, app6, 'g^', xs, app7, 'ro', xs, ref, 'b')
+    legend ('(5,4)','(6,3)','(7,2)','ml')
 end
 
 %% Figure 5
@@ -88,10 +90,11 @@ figure(5), clf
 for sp = 1:2
     ref   = mittag_leffler (alphas(sp), alphas(sp), -xs);
     app5  = mlpR54a (alphas(sp), xs);
+    app6  = mlpR63a (alphas(sp), xs);
     app7  = mlpR72a (alphas(sp), xs);
     subplot (1, 2, sp)
-    plot (xs, app5, 'm*', xs, app7, 'ro', xs, ref, 'b')
-    legend ('(5,4)','(7,2)','ml')
+    plot (xs, app5, 'm*', xs, app6, 'g^', xs, app7, 'ro', xs, ref, 'b')
+    legend ('(5,4)','(6,3)','(7,2)','ml')
 end
 
 %% Figure 6
@@ -106,17 +109,20 @@ for sp = 1:4
     ref   = mittag_leffler (alpha, beta, -xs);
     if alpha == beta
         app7 = mlpR72a (alpha, xs);
+        app6 = mlpR63a (alpha, xs);
         app5 = mlpR54a (alpha, xs);
     else
-        app5 = mlpR54 (alpha, beta, xs); 
+        app5 = mlpR54 (alpha, beta, xs);
+        app6 = mlpR63 (alpha, beta, xs);
         app7 = mlpR72 (alpha, beta, xs);
     end
     err5 = abs (ref - app5);
+    err6 = abs (ref - app6);
     err7 = abs (ref - app7);
     subplot (2, 2, sp)
-    plot (xs, err5, 'b', xs, err7, 'g')
+    plot (xs, err5, 'b', xs, err6, 'r', xs, err7, 'g')
     set (gca, 'YScale', 'log')
-    legend ('(5,4)','(7,2)')
+    legend ('(5,4)','(6,3)','(7,2)')
     switch sp
         case 1, ylim ([1E-15 1E-3])
         case 2, ylim ([1E-15 1E-1])
