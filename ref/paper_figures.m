@@ -15,7 +15,7 @@ for sp = 1:4
     alpha = abps{sp}(1);
     beta  = abps{sp}(2);
     ref   = mittag_leffler (alpha, beta, -xs);
-    app7   = mitlef_r32 (alpha, beta, xs);
+    app7   = mlpR32 (alpha, beta, xs);
     subplot (2, 2, sp)
     plot (xs, ref, 'b', xs, app7, 'g^')
     legend ('ml', '(3,2)')
@@ -28,7 +28,7 @@ xs = linspace (0.01, 10, 25);
 figure(2), clf
 for sp = 1:2
     ref = mittag_leffler (alphas(sp), alphas(sp), -xs);
-    app7 = mitlef_r32a (alphas(sp), xs);
+    app7 = mlpR32a (alphas(sp), xs);
     subplot (1, 2, sp)
     plot (xs, ref, 'b', xs, app7, 'g^')
     if sp == 1
@@ -51,7 +51,7 @@ for sp = 1:4
     alpha = abps{sp}(1);
     beta  = abps{sp}(2);
     ref   = mittag_leffler (alpha, beta, -xs);
-    app7   = mitlef_r72 (alpha, beta, xs);
+    app7   = mlpR72 (alpha, beta, xs);
     subplot (2, 2, sp)
     plot (xs, ref, 'b', xs, app7, 'ro')
     legend ('ml', '(7,2)')
@@ -69,7 +69,7 @@ for sp = 1:2
     alpha = abps{sp}(1);
     beta  = abps{sp}(2);
     ref   = mittag_leffler (alpha, beta, -xs);
-    app7   = mitlef_r72 (alpha, beta, xs);
+    app7   = mlpR72 (alpha, beta, xs);
     subplot (1, 2, sp)
     plot (xs, ref, 'b', xs, app7, 'ro')
     legend ('ml', '(7,2)')
@@ -85,7 +85,7 @@ xs = linspace (.001, 10, 25);
 figure(5), clf
 for sp = 1:2
     ref   = mittag_leffler (alphas(sp), alphas(sp), -xs);
-    app7   = mitlef_r72a (alphas(sp), xs);
+    app7   = mlpR72a (alphas(sp), xs);
     subplot (1, 2, sp)
     plot (xs, ref, 'b', xs, app7, 'ro')
     legend ('ml', '(7,2)')
@@ -102,9 +102,9 @@ for sp = 1:4
     beta  = abps{sp}(2);
     ref   = mittag_leffler (alpha, beta, -xs);
     if alpha == beta
-        app7 = mitlef_r72a (alpha, xs);
+        app7 = mlpR72a (alpha, xs);
     else
-        app7   = mitlef_r72 (alpha, beta, xs);
+        app7   = mlpR72 (alpha, beta, xs);
     end
     err   = abs (ref - app7);
     subplot (2, 2, sp)
@@ -131,11 +131,11 @@ for sp = 1:4
     beta  = abps{sp}(2);
     ref   = mittag_leffler (alpha, beta, -xs);
     if alpha == beta
-        app7 = mitlef_r72a (alpha, xs);
-        app3 = mitlef_r32a (alpha, xs);
+        app7 = mlpR72a (alpha, xs);
+        app3 = mlpR32a (alpha, xs);
     else
-        app7 = mitlef_r72 (alpha, beta, xs);
-        app3 = mitlef_r32 (alpha, beta, xs);
+        app7 = mlpR72 (alpha, beta, xs);
+        app3 = mlpR32 (alpha, beta, xs);
     end
     subplot (2, 2, sp)
     plot (xs, app3, 'g^', xs, app7, 'ro', xs, ref, 'b')
@@ -154,11 +154,11 @@ for sp = 1:4
     beta  = abps{sp}(2);
     ref   = mittag_leffler (alpha, beta, -xs);
     if alpha == beta
-        app7 = mitlef_r72a (alpha, xs);
-        app3 = mitlef_r32a (alpha, xs);
+        app7 = mlpR72a (alpha, xs);
+        app3 = mlpR32a (alpha, xs);
     else
-        app7 = mitlef_r72 (alpha, beta, xs);
-        app3 = mitlef_r32 (alpha, beta, xs);
+        app7 = mlpR72 (alpha, beta, xs);
+        app3 = mlpR32 (alpha, beta, xs);
     end
     subplot (2, 2, sp)
     plot (xs, abs (app7-ref), 'b', xs, abs(app3-ref), 'r')

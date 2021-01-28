@@ -1,5 +1,5 @@
-function [ R72 ] = mitlef_r72a ( alpha, x )
-%MITLEF_R72a 4th order approximant R^{7,2}_{\alpha,\beta} when \alpha = \beta
+function [ R72 ] = mlpR72a ( alpha, x )
+% MLPR72A R^{7,2}_{\alpha,\alpha}(x)
 %
     % precompute some fractions
     r1d =  gamma (-alpha) / gamma (alpha);

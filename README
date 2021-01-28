@@ -1,8 +1,0 @@
-mlpade
-===
-
-MATLAB functions for Pade approximations of the Mittag-Leffler function.
-
-This is just an implementation of:
-"Highly Accurate Global Pade Approximations of Generalized Mittag-Leffler Function and its Inverse"
-arXiv: 1912.10996

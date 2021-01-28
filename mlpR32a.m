@@ -1,5 +1,5 @@
-function [ R32 ] = mitlef_r32a ( alpha, x )
-%MITLEF_R32a 2nd order approximant R^{3,2}_{\alpha,\alpha}
+function [ R32 ] = mlpR32a ( alpha, x )
+% MLPR32A R^{3,2}_{\alpha,\alpha}(x)
 %
     denom = gamma (1+alpha) + ...
         (2 .* gamma(1-alpha).^2) ./ (gamma(1-2.*alpha)) .* x + ...

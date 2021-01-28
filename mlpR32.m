@@ -1,5 +1,5 @@
-function [ R32 ] = mitlef_r32 ( alpha, beta, x )
-%MITLEF_R32 2nd order approximant R^{3,2}_{\alpha,\beta}
+function [ R32 ] = mlpR32 ( alpha, beta, x )
+% MLPR32 R^{3,2}_{\alpha,\beta}(x)
 %
     % precompute gamma terms
     gbeta = gamma (beta);

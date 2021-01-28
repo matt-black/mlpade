@@ -1,5 +1,5 @@
-function [ R72 ] = mitlef_r72 ( alpha, beta, x )
-%MITLEF_R72 4th order approximant R^{7,2}_{\alpha,\beta}
+function [ R72 ] = mlpR72 ( alpha, beta, x )
+% MLPR72 R^{7,2}_{\alpha,\beta}(x)
 % 
 % only valid for alpha < beta
 % if \alpha = \beta use `mitlef_r72a`
