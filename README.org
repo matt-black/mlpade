@@ -1,12 +1,9 @@
-#+TITLE mlpade
-#+AUTHOR matt
-
 * mlpade
 
-MATLAB functions for Pade approximations of the Mittag-Leffler function, $E_{\alpha,\beta}(-x).
+MATLAB functions for Pade approximations of the Mittag-Leffler function, $E_{\alpha,\beta}(-x)$.
 
-These approximations are only valid for $E_{\alpha,\beta}(x)$, where $\alpha \le \beta$ & $x \lt 0$
-In math: $R_{\alpha,\beta}^{m,n}(x) \approx E_{\alpha,\beta}(-x), x > 0 & \alpha < \beta$
+These approximations are only valid for $E_{\alpha,\beta}(-x)$, where $\alpha \le \beta$ & $x \ge 0$
+In math: ($R_{\alpha,\beta}^{m,n}(x) \approx E_{\alpha,\beta}(-x), x \ge 0 & \alpha < \beta$)
 
 This is just an implementation of:
 "Highly Accurate Global Pade Approximations of Generalized Mittag-Leffler Function and its Inverse"
