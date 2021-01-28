@@ -33,7 +33,7 @@ function [ R72 ] = mitlef_r72 ( alpha, beta, x )
          -1;
          gbma/gbeta;
          -gbma/gbpa;
-         -gbma/gbp2a];
+         -gbma/gbm2a];
     % solve system
     pq = A \ b;                         % [p1,p2,p3,q0,q1,q2,q3]
     % compute

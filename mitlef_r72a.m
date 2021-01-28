@@ -2,7 +2,7 @@ function [ R72 ] = mitlef_r72a ( alpha, x )
 %MITLEF_R72a 4th order approximant R^{7,2}_{\alpha,\beta} when \alpha = \beta
 %
     % precompute some fractions
-    r1d =  gamma (-alpha);
+    r1d =  gamma (-alpha) / gamma (alpha);
     r2d = -gamma (-alpha) / gamma (2*alpha);
     r3d =  gamma (-alpha) / gamma (3*alpha);
     r4d = -gamma (-alpha) / gamma (4*alpha);
@@ -13,7 +13,7 @@ function [ R72 ] = mitlef_r72a ( alpha, x )
          0 0 r3d r2d r1d  0 ;
          0 0 r4d r3d r2d r1d;
          0 0 r5d r4d r3d r2d;
-         0 0  0   0   0   -1];
+         0 1  0   0   0   -1];
     b = [0;
          0;
          -1;
@@ -25,5 +25,5 @@ function [ R72 ] = mitlef_r72a ( alpha, x )
     % compute
     R72 = (-1/gamma(-alpha)) .* ...
           (pq(1) + pq(2).*x + x.^2) ./ ...
-          (pq(3) + pq(4).*x + pq(5).*x.^2 + pq(6).*x^3 + x.^4);
+          (pq(3) + pq(4).*x + pq(5).*x.^2 + pq(6).*x.^3 + x.^4);
 end
