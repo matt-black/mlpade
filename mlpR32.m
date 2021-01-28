@@ -16,3 +16,11 @@ function [ R32 ] = mlpR32 ( alpha, beta, x )
     % now do the computation
     R32 = (1 ./ gbma) .* ((p1 + x) ./ (q0 + q1.*x + x.^2));
 end
+
+% NOTE: this doesn't seem to work in MATLAB due to numerics issues(?)
+% compute partial fraction weights/poles
+% r1 = (-q1 + sqrt (q1^2 - 4*q0)) / 2;
+% r2 = (-q1 - sqrt (q1^2 - 4*q0)) / 2;
+% c1 = (p1 - r1) / (r2 - r1);
+% c2 = (p1 - r2) / (r1 - r2);
+% R32 = 2 .* real (c1 ./ (x - r1));

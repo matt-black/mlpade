@@ -12,7 +12,8 @@ function [ y ] = mlp ( alpha, beta, x, mn )
 % 
 % unlike all other functions, this one does input sanitation/error checking
 % note that this really just dispatches to the underlying functions for the actual computation
-    if nargin < 4, mn = '72'; end       % default to (7,2)
+    
+    if nargin < 4, mn = '(7,2)'; end       % default to (7,2)
     % make sure x inputs are valid (positive)
     if any (x < 0)
         warning ('mlpade/mlp :: negative inputs were automatically flipped to positive values')
@@ -26,6 +27,7 @@ function [ y ] = mlp ( alpha, beta, x, mn )
         y = exp (-x);
         return;
     end
+    
     % dispatch to output function
     switch mn
       case {'32', '(3,2)'}
