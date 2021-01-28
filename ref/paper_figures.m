@@ -130,13 +130,8 @@ for sp = 1:4
     alpha = abps{sp}(1);
     beta  = abps{sp}(2);
     ref   = mittag_leffler (alpha, beta, -xs);
-    if alpha == beta
-        app7 = mlpR72a (alpha, xs);
-        app3 = mlpR32a (alpha, xs);
-    else
-        app7 = mlpR72 (alpha, beta, xs);
-        app3 = mlpR32 (alpha, beta, xs);
-    end
+    app7 = mlp (alpha, beta, xs, '(7,2)');
+    app3 = mlp (alpha, beta, xs, '(3,2)');
     subplot (2, 2, sp)
     plot (xs, app3, 'g^', xs, app7, 'ro', xs, ref, 'b')
     legend ('(3,2)', '(7,2)', 'ml')
