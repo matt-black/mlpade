@@ -23,7 +23,5 @@ function [ R72 ] = mlpR72a ( alpha, x )
     % solve system
     pq = A \ b;                         % [p2,p3,q0,q1,q2,q3]
     % compute
-    R72 = (-1/gamma(-alpha)) .* ...
-          (pq(1) + pq(2).*x + x.^2) ./ ...
-          (pq(3) + pq(4).*x + pq(5).*x.^2 + pq(6).*x.^3 + x.^4);
+    R72 = computeRa4o (alpha, pq, x);
 end

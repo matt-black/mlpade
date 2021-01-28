@@ -34,6 +34,12 @@ function [ y ] = mlp ( alpha, beta, x, mn )
         else
             y = mlpR32  (alpha, beta, x);
         end
+      case {'54', '(5,4)'}
+        if alpha == beta
+            y = mlpR54a (alpha, x);
+        else
+            y = mlpR54 (alpha, beta, x);
+        end
       case {'72', '(7,2)'}
         if alpha == beta
             y = mlpR72a (alpha, x);

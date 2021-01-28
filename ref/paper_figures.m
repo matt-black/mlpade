@@ -51,10 +51,11 @@ for sp = 1:4
     alpha = abps{sp}(1);
     beta  = abps{sp}(2);
     ref   = mittag_leffler (alpha, beta, -xs);
-    app7   = mlpR72 (alpha, beta, xs);
+    app5  = mlpR54 (alpha, beta, xs);
+    app7  = mlpR72 (alpha, beta, xs);
     subplot (2, 2, sp)
-    plot (xs, ref, 'b', xs, app7, 'ro')
-    legend ('ml', '(7,2)')
+    plot (xs, app5, 'm*', xs, app7, 'ro', xs, ref, 'b')
+    legend ('5,4)','(7,2)','ml')
 end
 
 %% Figure 4
@@ -69,10 +70,11 @@ for sp = 1:2
     alpha = abps{sp}(1);
     beta  = abps{sp}(2);
     ref   = mittag_leffler (alpha, beta, -xs);
-    app7   = mlpR72 (alpha, beta, xs);
+    app5  = mlpR54 (alpha, beta, xs);
+    app7  = mlpR72 (alpha, beta, xs);
     subplot (1, 2, sp)
-    plot (xs, ref, 'b', xs, app7, 'ro')
-    legend ('ml', '(7,2)')
+    plot (xs, app5, 'm*', xs, app7, 'ro', xs, ref, 'b')
+    legend ('(5,4)','(7,2)','ml')
 end
 
 %% Figure 5
@@ -85,10 +87,11 @@ xs = linspace (.001, 10, 25);
 figure(5), clf
 for sp = 1:2
     ref   = mittag_leffler (alphas(sp), alphas(sp), -xs);
-    app7   = mlpR72a (alphas(sp), xs);
+    app5  = mlpR54a (alphas(sp), xs);
+    app7  = mlpR72a (alphas(sp), xs);
     subplot (1, 2, sp)
-    plot (xs, ref, 'b', xs, app7, 'ro')
-    legend ('ml', '(7,2)')
+    plot (xs, app5, 'm*', xs, app7, 'ro', xs, ref, 'b')
+    legend ('(5,4)','(7,2)','ml')
 end
 
 %% Figure 6
@@ -103,14 +106,17 @@ for sp = 1:4
     ref   = mittag_leffler (alpha, beta, -xs);
     if alpha == beta
         app7 = mlpR72a (alpha, xs);
+        app5 = mlpR54a (alpha, xs);
     else
-        app7   = mlpR72 (alpha, beta, xs);
+        app5 = mlpR54 (alpha, beta, xs); 
+        app7 = mlpR72 (alpha, beta, xs);
     end
-    err   = abs (ref - app7);
+    err5 = abs (ref - app5);
+    err7 = abs (ref - app7);
     subplot (2, 2, sp)
-    plot (xs, err, 'b')
+    plot (xs, err5, 'b', xs, err7, 'g')
     set (gca, 'YScale', 'log')
-    legend ('(7,2)')
+    legend ('(5,4)','(7,2)')
     switch sp
         case 1, ylim ([1E-15 1E-3])
         case 2, ylim ([1E-15 1E-1])

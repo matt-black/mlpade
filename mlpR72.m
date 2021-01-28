@@ -36,8 +36,5 @@ function [ R72 ] = mlpR72 ( alpha, beta, x )
          -gbma/gbm2a];
     % solve system
     pq = A \ b;                         % [p1,p2,p3,q0,q1,q2,q3]
-    % compute
-    R72 = (1 / gbma) .* ...
-          (pq(1) + pq(2).*x + pq(3).*x.^2 + x.^3) ./ ...
-          (pq(4) + pq(5).*x + pq(6).*x.^2 + pq(7).*x.^3 + x.^4);
+    R72 = computeRab4o (alpha, beta, pq, x);
 end
