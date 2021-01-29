@@ -151,10 +151,10 @@ for sp = 1:4
 end
 
 %% Figure 8
-abps = {[0.75,1], [0.5,0.5];
-    [0.95,1], [1,2]};
-xs = logspace (-4, 1, 100);
-
+abps = {[0.25, 0.25], [0.5, 0.5];
+        [0.25, 1], [0.95, 1];
+        [1, 1.1], [1, 2]};
+xs = linspace (0, 10, 30);
 figure(8), clf
 for sp = 1:4
     alpha = abps{sp}(1);
@@ -167,9 +167,23 @@ for sp = 1:4
         app7 = mlpR72 (alpha, beta, xs);
         app3 = mlpR32 (alpha, beta, xs);
     end
-    subplot (2, 2, sp)
-    plot (xs, abs (app7-ref), 'b', xs, abs(app3-ref), 'r')
+    subplot (3, 2, sp)
+    plot (xs, app3, 'g^', xs, app7, 'ro', xs, ref, 'b')
     legend ('(7,2)', '(3,2)')
     title (sprintf ('\\alpha=%.2f, \\beta=%.2f', alpha, beta))
-    set (gca, 'YScale', 'log')
+end
+
+%% Figure 9
+% rough test of inverse MLF
+abps = {[0.5 1], [0.5 0.5];
+        [1 2], [0.8 1]};
+figure(9), clf
+for sp = 1:4
+    alpha = abps{sp}(1);
+    beta  = abps{sp}(2);
+    ys = linspace (0.025, 1, 30);
+    xs = imlp (alpha, beta, ys, '(7,2)');
+    bad = isnan (xs);
+    subplot (2, 2, sp)
+    plot (ys(~bad), xs(~bad), 'ro', ys(bad), xs(bad), 'g*')
 end

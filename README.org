@@ -1,6 +1,6 @@
 * mlpade
 
-MATLAB functions for Pade approximations of the Mittag-Leffler function, E_{\alpha,\beta}(-x).
+MATLAB functions for Pade approximations of the Mittag-Leffler function, E_{\alpha,\beta}(-x) and its inverse.
 
 These approximations, R_{\alpha,\beta}^{m,n}(x) \approx E_{\alpha,\beta}(-x), are only valid where:
 + 0 \lt \alpha \le 1
@@ -14,6 +14,11 @@ arXiv: 1912.10996
 
 * Using the library
 
-You only have to use ~mlp.m~. Check the documentation for that file to see how to use it.
+There's really only 2 functions you need to use:
 
-The other files are the actual implementations of the approximants, which do no sort of input checking/sanitizing and won't throw errors or warn you if you misuse them. 
+~mlp.m~  : Mittag-Leffler function, E_{\alpha,\beta}(-x)
+~imlp.m~ : inverse of Mittag-Leffler, -L_{\alpha,beta}(y)
+
+For how to use them, see the docs in each file.
+
+The other files are the actual implementations of the approximants, which do no sort of input checking/sanitizing and won't throw errors or warn you if you misuse them.
