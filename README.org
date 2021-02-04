@@ -21,4 +21,10 @@ There's really only 2 functions you need to use:
 
 For how to use them, see the docs in each file.
 
+If you want to precompute your \alpha and \beta values and then more directly compute the approximant, the workflow is:
+  1) ~solvePQcoeffs.m~ to get polynomial coefficients of the approximant for the given \alpha, \beta
+  2) ~compute4OrdPoly.m~ to compute the polynomial
+
+(but note that this workflow has no error checking/input validation, so user beware)
+
 The other files are the actual implementations of the approximants, which do no sort of input checking/sanitizing and won't throw errors or warn you if you misuse them.

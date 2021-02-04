@@ -17,8 +17,7 @@ function [ x ] = imlp ( alpha, beta, y, mn )
         y = abs (y);
     end
     % checks on alpha, beta inputs
-    assert (alpha > 0 & alpha <= 1, 'mlpade/imlp :: alpha must be in range (0,1]');
-    assert (alpha <= beta, 'mlpade/imlp :: alpha must be less than beta')
+    [alpha, beta] = checkAlphaBetaInputs (alpha, beta);
     if (alpha == 1 && beta == 1)
         warning ('mlpade/imlp :: alpha=1,beta=1 is just exp')
         x = - log(y);

@@ -3,7 +3,7 @@ function [ y ] = mlp ( alpha, beta, x, mn )
 %
 % INPUTS:
 %    alpha : must be in range (0,1]
-%    beta  : must be >= alpha
+%    beta  : must be >= alpha, or empty
 %    x     : value to compute E_{\alpha,\beta} at
 %    mn    : type of approximation to compute (R^{m,n})
 %            implemented (m,n) pairs are: (3,2), (7,2)
@@ -19,9 +19,9 @@ function [ y ] = mlp ( alpha, beta, x, mn )
         warning ('mlpade/mlp :: negative inputs were automatically flipped to positive values')
         x = abs (x);
     end
+    
     % checks on alpha, beta inputs
-    assert (alpha > 0 & alpha <= 1, 'mlpade/mlp :: alpha must be in range (0,1]');
-    assert (alpha <= beta, 'mlpade/mlp :: alpha must be less than beta')
+    [alpha, beta] = checkAlphaBetaInputs (alpha, beta);
     if (alpha == 1 && beta == 1)
         warning ('mlpade/mlp :: alpha=1,beta=1 is just exp')
         y = exp (-x);
